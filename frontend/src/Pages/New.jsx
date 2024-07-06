@@ -64,7 +64,6 @@ function New() {
                     <span  className="label-text">Image description</span>
                 </div>
                 <textarea name="desc"  value={desc} onChange={handleDescChange} className="textarea textarea-success" placeholder="Bio"></textarea>
-                
                 </label>
                 <label className="form-control w-full max-w-xs">
                 <div className="label">
@@ -73,6 +72,7 @@ function New() {
                 <input name="artist" value={artist} onChange={handleArtistChange} type="text" placeholder="Type Artist Name" className="input input-bordered input-success w-full max-w-xs" />
             </label>
         </fieldset>
+        <button onClick={handleSubmit}>Submit</button>
         </form>
     </div>
     
