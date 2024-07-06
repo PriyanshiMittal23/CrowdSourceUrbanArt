@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path='/' element={authUser?<Home/>:<Navigate to='/login'/>}></Route>
+        <Route path='/' element={<Home/>}></Route>
         <Route path='/register' element={authUser?<Navigate to='/otp'/>:<SignUp/>} ></Route>
         <Route path='/login' element={authUser?<Navigate to='/'/>:<Login/>} ></Route>
         <Route path='/otp' element={<OTPVerification/>}></Route>
