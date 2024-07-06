@@ -9,5 +9,5 @@ export const allImages = async(req,res)=>{
 }
 
 export const newImage = async(req,res)=>{
-    
+    const src = `/uploads/${req.file.filename}`
 }
