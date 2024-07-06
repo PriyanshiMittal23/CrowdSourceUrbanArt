@@ -9,7 +9,7 @@ const useLogout = () => {
 	const logout = async () => {
 		setLoading(true);
 		try {
-			const res = await fetch("/logout", {
+			const res = await fetch("http://localhost:5000/logout", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 			});
