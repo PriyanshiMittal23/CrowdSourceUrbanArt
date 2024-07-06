@@ -14,6 +14,10 @@ const imageSchema = new mongoose.Schema({
         ref:"User",
         // required:true
     },
+    desc:{
+        type:String,
+        trim:true
+    },
     comment:[
         {
             type:mongoose.Schema.Types.ObjectId,
