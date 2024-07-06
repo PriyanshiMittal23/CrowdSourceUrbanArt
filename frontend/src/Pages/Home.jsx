@@ -1,13 +1,12 @@
 import React from 'react'
-import Navbar from '../Components/Navbar'
 import Card from '../Components/Card'
+import Navbar from '../Components/Navbar'
 
 const Home = () => {
+
   return (
     <div>
-      
       <Navbar/>
-      <Card/>
       home
     </div>
   )

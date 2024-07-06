@@ -6,6 +6,7 @@ import OTPVerification from './Pages/OTPVerification.jsx'
 import {Toaster} from 'react-hot-toast'
 import { useAuthContext } from './context/AuthContext.jsx'
 import Home from './Pages/Home.jsx'
+import  New  from "./Pages/New.jsx";
 
 const App = () => {
   const {authUser} = useAuthContext();
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/register' element={authUser?<Navigate to='/'/>:<SignUp/>} ></Route>
         <Route path='/login' element={authUser?<Navigate to='/'/>:<Login/>} ></Route>
         <Route path='/otp' element={<OTPVerification/>}></Route>
+        <Route path='/new' element={<New/>}></Route>
       </Routes>
       <Toaster/>
       {/* <Login/> */}
