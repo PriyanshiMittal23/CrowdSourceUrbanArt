@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function New() {
-
-  const [name, setName] = useState('');
-  const [src, setSrc] = useState(null);
-  const [desc,setDesc]=useState('')
-  const [artist,setArtist]=useState('')
+  let [name, setName] = useState('');
+  let [src, setSrc] = useState(null);
+  let [desc, setDesc] = useState('');
+  let [artist, setArtist] = useState('');
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -15,13 +15,13 @@ function New() {
     setSrc(e.target.files[0]);
   };
 
-  const handleDescChange=(e)=>{
-    setDesc=(e.target.value[1])
-  }
+  const handleDescChange = (e) => {
+    setDesc(e.target.value);
+  };
 
-  const handleArtistChange=(e)=>{
-    setArtist=(e.target.value[2])
-  }
+  const handleArtistChange = (e) => {
+    setArtist(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,50 +33,69 @@ function New() {
     formData.append('artist', artist);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/upload', formData, {
+      const response = await axios.post('http://localhost:5000/new', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          'Content-Type': 'multipart/form-data',
+        },
       });
       console.log('Upload successful!', response.data);
-      // Handle success (e.g., show a success message)
     } catch (error) {
       console.error('Error uploading the image:', error);
-      // Handle error (e.g., show an error message)
     }
   };
+
   return (
-    <div style={{display:'flex', justifyContent:'center', alignItems:'center', margin:'10%'}}>
-      <br></br>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '10%' }}>
       <form onSubmit={handleSubmit}>
-      <fieldset >
-            <label className="form-control w-full max-w-xs">
-                <div className="label">
-                    <span  className="label-text">Image Title</span>
-                </div>
-                <input type="text" name="name" value={name} onChange={handleNameChange} placeholder="Type Image Title" className="input input-bordered input-success w-full max-w-xs" />
-            </label>
-            <br />
-            <input type="file" accept="image/*" onChange={handleImageChange} name="src" className="file-input file-input-bordered file-input-success w-full max-w-xs" />
-            <br />
-            <label className="form-control">
-                <div className="label">
-                    <span  className="label-text">Image description</span>
-                </div>
-                <textarea name="desc"  value={desc} onChange={handleDescChange} className="textarea textarea-success" placeholder="Bio"></textarea>
-                </label>
-                <label className="form-control w-full max-w-xs">
-                <div className="label">
-                    <span  className="label-text">Artist </span>
-                </div>
-                <input name="artist" value={artist} onChange={handleArtistChange} type="text" placeholder="Type Artist Name" className="input input-bordered input-success w-full max-w-xs" />
-            </label>
+        <fieldset>
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">Image Title</span>
+            </div>
+            <input
+              type="text"
+              value={name}
+              onChange={handleNameChange}
+              placeholder="Type Image Title"
+              className="input input-bordered input-success w-full max-w-xs"
+            />
+          </label>
+          <br />
+          <input
+            type="file"
+            onChange={handleImageChange}
+            name="src"
+            className="file-input file-input-bordered file-input-success w-full max-w-xs"
+          />
+          <br />
+          <label className="form-control">
+            <div className="label">
+              <span className="label-text">Image description</span>
+            </div>
+            <textarea
+              value={desc}
+              onChange={handleDescChange}
+              className="textarea textarea-success"
+              placeholder="Bio"
+            ></textarea>
+          </label>
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">Artist</span>
+            </div>
+            <input
+              value={artist}
+              onChange={handleArtistChange}
+              type="text"
+              placeholder="Type Artist Name"
+              className="input input-bordered input-success w-full max-w-xs"
+            />
+          </label>
         </fieldset>
-        <button onClick={handleSubmit}>Submit</button>
-        </form>
+        <button type="submit" className=' bg-red-500' onClick={handleSubmit}>Submit</button>
+      </form>
     </div>
-    
-  )
+  );
 }
 
 export default New;
