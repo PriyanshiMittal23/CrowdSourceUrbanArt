@@ -96,8 +96,8 @@ const SignUp = () => {
                 <p>Already have an account? <Link to={'/login'} className='text-red-400'>Login</Link></p>
               </div>
               <div className="flex items-center justify-center">
-                <button className="btn btn-error text-gray-100 font-bold rounded w-full" type="button" onClick={handleSubmit}>
-                  Sign Up
+                <button className="btn btn-error text-gray-100 font-bold rounded w-full" type="button" onClick={handleSubmit} disabled={loading}>
+                  {loading?<span className='loading loading-spinner'></span>:"Sign Up"}
                 </button>
               </div>
             </form>
