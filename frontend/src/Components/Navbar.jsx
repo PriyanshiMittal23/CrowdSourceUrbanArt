@@ -8,7 +8,7 @@ const Navbar = () => {
     const {authUser} = useAuthContext();
     const profilePicUrl = authUser.profilePic;
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-gray-300">
         <div className="flex-1">
         <span className="btn btn-ghost text-xl">Art</span>
         </div>

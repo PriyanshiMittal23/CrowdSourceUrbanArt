@@ -58,7 +58,8 @@ export const loginUser = async(req,res)=>{
         generateTokenAndSetCookie(user._id,res);
         res.status(200).json({
             username:user.username,
-            id:user._id
+            id:user._id,
+            profilePic:user.profilePic
         })
 
     } catch (error) {
