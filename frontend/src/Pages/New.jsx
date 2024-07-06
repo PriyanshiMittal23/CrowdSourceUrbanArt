@@ -1,11 +1,11 @@
-import React from 'react'
-
+import React,{useState} from 'react'
+import axios from 'axios'
 function New() {
 
-  const [name, setName] = useState('');
-  const [src, setSrc] = useState(null);
-  const [desc,setDesc]=useState('')
-  const [artist,setArtist]=useState('')
+  let [name, setName] = useState('');
+  let [src, setSrc] = useState(null);
+  let [desc,setDesc]=useState('')
+  let [artist,setArtist]=useState('')
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -33,7 +33,7 @@ function New() {
     formData.append('artist', artist);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/upload', formData, {
+      const response = await axios.post('http://localhost:5000/new', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
